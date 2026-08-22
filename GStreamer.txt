@@ -1,0 +1,89 @@
+From: Jacqueline MacPherson <jm5@st-andrews.ac.uk>
+Sent: 21 August 2024 10:31
+To: PsyNeuro Lecturers <psy-lect@st-andrews.ac.uk>
+Cc: Ken Munro <kjm@st-andrews.ac.uk>; Calum Cook <cjcc1@st-andrews.ac.uk>
+Subject: Teaching software and technology
+
+ 
+
+Dear all,
+
+ 
+
+Software:
+
+A reminder to please check the teaching software on the teaching PCs prior ot the start of term.  Note the changes to the MATLAB deployment as mentioned previously (see below).  If you encounter any problems please let me know as soon as possible.
+
+ 
+
+Equipment:
+
+IT Services and TEL colleagues are offering teaching space familiarisation sessions weeks commencing 2nd September 2024 and 9th September 2024.
+ 
+You can register for an in-person demonstration of the teaching room technology using PDMS. The following dates and venues are available to book: 
+
+ 
+
+Wednesday 4th September 14:00 – 15:30, Physics Lecture Theatre C Using technology in teaching spaces - PDMS - University of St Andrews (st-andrews.ac.uk)
+
+Friday 6th September 10:30 – 12:00, School III Using technology in teaching spaces - PDMS - University of St Andrews (st-andrews.ac.uk)
+
+Tuesday 10th September 14:00 – 15:30, Younger Hall Using technology in teaching spaces - PDMS - University of St Andrews (st-andrews.ac.uk)
+
+Thursday 12th September 10:30 – 12:00, Maths Lecture Theatre B Using technology in teaching spaces - PDMS - University of St Andrews (st-andrews.ac.uk)
+
+ 
+
+We are also offering one-to-one, 20 minute sessions where you can try the technology and an IT/AV Technician is available to answer any questions.  Sessions can be booked on our bookings page:
+
+ 
+
+https://outlook.office365.com/owa/calendar/MSBITServicesCEEDdropin@UniversityofStAndrews907.onmicrosoft.com/bookings/
+
+ 
+
+I appreciate that these limited times may not be suitable for all who wish to attend, so would encourage you to request an alternative session via the IT Service Desk as soon as possible.
+
+ 
+
+ 
+
+ 
+
+MATLAB
+
+IT Services are looking to streamline their delivery of teaching software where possible.  To reduce the install size of MATLAB they are NOT including PsychToolbox as part of the build/install but have provided an alternative solution outlined below.  Tom Otto has kindly helped test the procedure and he does not feel it will impactful.  IT Services do not want this change to impact the teaching experience within the classroom so please test this yourself and if you have any concerns regards these changes let me know as soon as possible.  If you would like any assistance with testing please email workshop@st-andrews.ac.uk.
+
+ 
+
+Solution:
+
+The PsychToolbox library file (psychtoolbox-3.0.19.13.mltbx) has been made available on the University’s classroom share:  \\cfs\shared\class\MATLAB\ (or if on the teaching PCs, drive L:\)
+
+ 
+
+The toolbox needs to be installed at the start of every user/student session.  The easiest way to do this is to include the following lines of code in a file called startup.m and getting the students to put it their Documents\MATLAB folder.  This will automatically run every time MATLAB is launched.   Alternatively, the code can be included at the start of any MATLAB script that is requiring the psychtoolbox functions.
+
+ 
+
+if not(exist('PsychStartup', 'file'))
+
+    matlab.addons.toolbox.installToolbox('\\cfs\shared\class\MATLAB\psychtoolbox-3.0.19.13.mltbx')
+
+end
+
+psychbasicpath=fullfile(PsychtoolboxRoot,'PsychBasic')
+
+rmpath(psychbasicpath)
+
+addpath(psychbasicpath,'-end')
+
+PsychStartup
+
+ 
+
+An example script and the psychtoolbox plugin is available on the classroom share.
+
+ 
+
+\\cfs\shared\class\MATLAB\ or if on the teaching PCs L:\
